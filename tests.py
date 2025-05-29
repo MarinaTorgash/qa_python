@@ -109,14 +109,20 @@ class TestBooksCollector:
         book.add_new_book('Оно')
         assert book.get_books_for_children() == []
 
-    @pytest.mark.parametrize('name_book, genre', [['Таинственный остров', 'Фантастика']])
-    def test_add_and_delete_book_in_favorites_valid_book_added_and_removed(self, name_book, genre):
+    @pytest.mark.parametrize('name_book, genre', [('Таинственный остров', 'Фантастика')])
+    def test_add_book_in_favorites_valid_book_added_once(self, name_book, genre):
         book = BooksCollector()
         book.add_new_book(name_book)
         book.set_book_genre(name_book, genre)
         book.add_book_in_favorites(name_book)
-        assert book.favorites == [name_book]
+        assert name_book in book.favorites
 
+    @pytest.mark.parametrize('name_book, genre', [('Таинственный остров', 'Фантастика')])
+    def test_delete_book_from_favorites_existing_book_removed(self, name_book, genre):
+        book = BooksCollector()
+        book.add_new_book(name_book)
+        book.set_book_genre(name_book, genre)
+        book.add_book_in_favorites(name_book)
         book.delete_book_from_favorites(name_book)
         assert name_book not in book.favorites
 

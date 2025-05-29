@@ -30,7 +30,9 @@
 
     def test_get_books_for_children_genre_missing_books_returns_empty_list(self)  возврат списка книг, которые подходят детям с отсутствием жанра у книг в словаре
 
-    def test_add_and_delete_book_in_favorites_valid_book_added_and_removed(self, name_book, genre) - добавление книги в избранное, когда книга находится в словаре, и удаление добавленной книги из избранного
+    test_add_book_in_favorites_valid_book_added_once - добавление книги в избранное впервые, когда книга находится в словаре
+
+    test_delete_book_from_favorites_existing_book_removed - удаление добавленной книги из избранного, когда книга находится в словаре
 
     def test_add_book_in_favorites_duplicate_book_ignored(self, name_book, genre)  - добавление книги в избранное при попытке повторного добавления книги, которая уже есть в словаре
 
